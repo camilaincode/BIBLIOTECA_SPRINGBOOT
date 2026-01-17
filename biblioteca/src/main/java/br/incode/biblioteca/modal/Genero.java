@@ -55,8 +55,8 @@ public class Genero {
     @OneToMany
     private List<Genero> subGenero = new ArrayList<Genero>();
 
-    //@OneToMany(mappedBy = "genero", cascade = CascadeType.PERSIST)
-    //private List<Livro> livros = new ArrayList<Livro>();
+    // @OneToMany(mappedBy = "genero", cascade = CascadeType.PERSIST)
+    // private List<Livro> livros = new ArrayList<Livro>();
 
     @CreationTimestamp
     private LocalDateTime criadoEm;
