@@ -1,5 +1,8 @@
 package br.incode.biblioteca.service.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import br.incode.biblioteca.mapper.GeneroMapper;
@@ -14,27 +17,20 @@ import br.incode.biblioteca.repository.GeneroRepository;
 public class GeneroServiceImpl implements GeneroService {
 
     private final GeneroRepository repository;
+    private final GeneroMapper mapper;
     
     @Override
     public GeneroDTO criarGenero(GeneroDTO generoDTO){
-        Genero genero = Genero.builder()
-                                        .codigo(generoDTO.getCodigo())
-                                        .nomeGenero(generoDTO.getNomeGenero())
-                                        .descricao(generoDTO.getDescricao())
-                                        .ativo(true)
-                                        .ordemDisplay(generoDTO.getOrdemDisplay())
-                                        .build();
-
-        if(generoDTO.getGeneroPaiId() != null){
-            Genero generoPai = repository.findById(generoDTO.getGeneroPaiId()).get();
-            genero.setGeneroPai(generoPai);
-        }
-
+        Genero genero = mapper.emEntidade(generoDTO);
         Genero generoCriado = repository.save(genero);
+        return mapper.emDTO(generoCriado);
+    }
 
-        GeneroDTO generoEmDTO = GeneroMapper.emDTO(generoCriado);
-
-        return generoEmDTO;
+    @Override
+    public List<GeneroDTO> listarTodosGeneros(){
+        return repository.findAll().stream()
+                .map(genero -> mapper.emDTO(genero))
+                .collect(Collectors.toList());
     }
     
 }
