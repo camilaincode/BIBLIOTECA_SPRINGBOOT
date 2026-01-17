@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.incode.biblioteca.modal.Genero;
+import br.incode.biblioteca.payload.dto.GeneroDTO;
 import br.incode.biblioteca.service.impl.GeneroServiceImpl;
 import lombok.RequiredArgsConstructor;
 
@@ -18,8 +18,8 @@ public class GeneroController {
     private final GeneroServiceImpl generoServiceImpl;
 
     @PostMapping("/criar")
-    public ResponseEntity<Genero> adicionarGenero(@RequestBody Genero genero){
-        Genero generoCriado = generoServiceImpl.criarGenero(genero);
+    public ResponseEntity<GeneroDTO> adicionarGenero(@RequestBody GeneroDTO genero){
+        GeneroDTO generoCriado = generoServiceImpl.criarGenero(genero);
         return ResponseEntity.ok(generoCriado);
     }
     

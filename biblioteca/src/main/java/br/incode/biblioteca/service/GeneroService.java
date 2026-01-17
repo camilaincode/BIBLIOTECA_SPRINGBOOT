@@ -1,8 +1,8 @@
 package br.incode.biblioteca.service;
 
-import br.incode.biblioteca.modal.Genero;
+import br.incode.biblioteca.payload.dto.GeneroDTO;
 
 public interface GeneroService {
-    Genero criarGenero(Genero genero);
-    
+    GeneroDTO criarGenero(GeneroDTO genero);
+
 }
