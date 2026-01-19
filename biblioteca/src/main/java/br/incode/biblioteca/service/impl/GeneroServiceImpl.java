@@ -32,5 +32,45 @@ public class GeneroServiceImpl implements GeneroService {
                 .map(genero -> mapper.emDTO(genero))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public GeneroDTO buscarGeneroPorId(Long id){
+        return null;
+    }
+
+    @Override
+    public GeneroDTO atualizarGenero(Long id, GeneroDTO generoDTO){
+        return null;
+    }
+
+    @Override
+    public void deletarGenero(Long id){
+        
+    }
+
+    @Override
+    public void hardDeletarGenero(Long id){
+
+    }
+
+    @Override
+    public List<GeneroDTO> listarTodosGenerosAtivosComSubGeneros(){
+        return null;
+    }
+
+    @Override
+    public List<GeneroDTO> listarTopNivelGeneros(){
+        return null;
+    }
+
+    @Override
+    public Long buscarTotalDeGeneros(){
+        return null;
+    }
+
+    @Override
+    public Long buscarQuantidadeDeLivrosPorGenero(Long id){
+        return null;
+    }
     
 }
