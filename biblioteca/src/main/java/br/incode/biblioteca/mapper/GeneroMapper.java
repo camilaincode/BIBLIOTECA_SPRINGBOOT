@@ -1,5 +1,6 @@
 package br.incode.biblioteca.mapper;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
@@ -63,5 +64,26 @@ public class GeneroMapper {
         }
 
         return genero;
+    }
+
+    public void atualizarEntidadeporDto(GeneroDTO dto, Genero genero){
+        if (dto == null || genero == null) {
+            return;
+        }
+
+        genero.setCodigo(dto.getCodigo());
+        genero.setNomeGenero(dto.getNomeGenero());
+        genero.setDescricao(dto.getDescricao());
+        genero.setOrdemDisplay(dto.getOrdemDisplay() != null ? dto.getOrdemDisplay() : 0);
+        if(dto.getAtivo()!=null){
+            genero.setAtivo(dto.getAtivo());
+        }
+        if(dto.getGeneroPaiId()!=null){
+            repository.findById(dto.getGeneroPaiId()).ifPresent(genero :: setGeneroPai);
+        }
+    }
+
+    public List<GeneroDTO> emListaDtos(List<Genero> listaGeneros){
+        return listaGeneros.stream().map(genero -> emDTO(genero)).collect(Collectors.toList());
     }
 }

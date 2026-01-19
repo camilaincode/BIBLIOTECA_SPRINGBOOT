@@ -2,8 +2,10 @@ package br.incode.biblioteca.service;
 
 import java.util.List;
 
-import org.springframework.boot.data.autoconfigure.web.DataWebProperties.Pageable;
-import org.springframework.data.domain.Page;
+import br.incode.biblioteca.exception.GeneroException;
+
+//import org.springframework.boot.data.autoconfigure.web.DataWebProperties.Pageable;
+//import org.springframework.data.domain.Page;
 
 import br.incode.biblioteca.payload.dto.GeneroDTO;
 
@@ -12,13 +14,13 @@ public interface GeneroService {
 
     List<GeneroDTO> listarTodosGeneros();
 
-    GeneroDTO buscarGeneroPorId(Long id);
+    GeneroDTO buscarGeneroPorId(Long id) throws GeneroException;
 
-    GeneroDTO atualizarGenero(Long id, GeneroDTO generoDTO);
+    GeneroDTO atualizarGenero(Long id, GeneroDTO generoDTO) throws GeneroException;
 
-    void deletarGenero(Long id);
+    void deletarGenero(Long id) throws GeneroException;
 
-    void hardDeletarGenero(Long id);
+    void hardDeletarGenero(Long id) throws GeneroException;
 
     List<GeneroDTO> listarTodosGenerosAtivosComSubGeneros();
 
