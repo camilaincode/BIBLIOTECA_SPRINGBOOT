@@ -58,7 +58,7 @@ public class LivroDTO {
     @Size(max = 100, message = "Editora deve ter no maximo 100 caracteres")
     private String editora;
 
-    private LocalDate DataPublicacao;
+    private LocalDate dataPublicacao;
 
     @Size(max = 20, message = "Idioma deve ter no maximo 20 caracteres")
     private String idioma;
