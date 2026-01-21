@@ -49,7 +49,7 @@ public class Livro {
 
     private LocalDate dataPublicacao;
 
-    private String lingua;
+    private String idioma;
 
     private Integer paginas;
 
