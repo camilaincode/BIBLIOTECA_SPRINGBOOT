@@ -3,6 +3,8 @@ package br.incode.biblioteca.service;
 import java.util.List;
 
 import br.incode.biblioteca.payload.dto.LivroDTO;
+import br.incode.biblioteca.payload.request.LivroRequestPesquisa;
+import br.incode.biblioteca.payload.response.PageResponse;
 
 public interface LivroService {
 
@@ -22,4 +24,9 @@ public interface LivroService {
 
     LivroDTO buscarLivroPorISBN(String isbn);
 
+    PageResponse<LivroDTO> pesquisarLivroComFiltros(LivroRequestPesquisa requestPesquisa);
+
+    long totalDeLivrosAtivos();
+
+    long totalDeLivrosDisponiveis();
 }
