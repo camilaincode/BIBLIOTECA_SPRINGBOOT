@@ -55,7 +55,9 @@ public class LivroServiceImpl implements LivroService {
     @Override
     public List<LivroDTO> listarLivros() {
 
-        return null;
+        return repository.findAll().stream()
+                          .map(livro -> mapper.emDto(livro))
+                          .collect(Collectors.toList());
     }
 
     @Override
