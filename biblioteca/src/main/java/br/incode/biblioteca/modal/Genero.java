@@ -32,7 +32,7 @@ import lombok.Setter;
 @Builder
 public class Genero {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotBlank(message = "Codigo do genero é obrigatorio")

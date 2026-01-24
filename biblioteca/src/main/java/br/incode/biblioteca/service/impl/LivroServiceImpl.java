@@ -23,8 +23,8 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class LivroServiceImpl implements LivroService {
-    LivroRepository repository;
-    LivroMapper mapper;
+    private final LivroRepository repository;
+    private final LivroMapper mapper;
 
     @Override
     public LivroDTO criarLivro(LivroDTO livroDTO) throws LivroException {

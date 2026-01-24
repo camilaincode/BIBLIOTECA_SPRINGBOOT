@@ -26,7 +26,7 @@ public class GeneroController {
 
     private final GeneroServiceImpl generoServiceImpl;
 
-    @PostMapping("/criar")
+    @PostMapping("/")
     public ResponseEntity<GeneroDTO> adicionarGenero(@RequestBody GeneroDTO genero) {
         GeneroDTO generoCriado = generoServiceImpl.criarGenero(genero);
         return ResponseEntity.ok(generoCriado);

@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LivroRequestPesquisa {
-    
+
     private String termoPesquisa;
     private Long generoId;
     private boolean apenasDisponiveis;
     private Integer pagina = 0;
-    private Integer tamanho=20;
+    private Integer tamanho = 20;
     private String ordernarPor = "criadoEm";
     private String ordemDirecao = "DESC";
 }

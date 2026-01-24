@@ -41,7 +41,6 @@ public class Livro {
     private String autor;
 
     @ManyToOne
-    @Column(nullable = false)
     private Genero genero;
 
     @Column(nullable = false)
