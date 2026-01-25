@@ -10,10 +10,9 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
-import java.lang.reflect.Array;
 import java.util.Collections;
 
-import org.jspecify.annotations.Nullable;
+
 import jakarta.servlet.http.HttpServletRequest;
 
 @Configuration
