@@ -1,6 +1,5 @@
 package br.incode.biblioteca.modal;
 
-
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -8,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import br.incode.biblioteca.domain.AuthProvider;
 import br.incode.biblioteca.domain.UserRole;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,6 +32,9 @@ public class User {
     private String email;
 
     private String nomeCompleto;
+
+    @Column(unique = true)
+    private String username;
 
     private UserRole papel;
 
