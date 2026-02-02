@@ -1,7 +1,13 @@
 package br.incode.biblioteca.modal;
 
-import java.security.AuthProvider;
 
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import br.incode.biblioteca.domain.AuthProvider;
+import br.incode.biblioteca.domain.UserRole;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,11 +33,23 @@ public class User {
 
     private String nomeCompleto;
 
-    private String papel;
+    private UserRole papel;
 
     private String telefone;
 
-    private AuthProvider authProvider;
+    private AuthProvider authProvider = AuthProvider.LOCAL;
+
+    private String googleId;
+
+    private String imagemPerfilUrl;
 
     private String senha;
+
+    private LocalDateTime ultimoLogin;
+
+    @CreationTimestamp
+    private LocalDateTime criadoEm;
+
+    @UpdateTimestamp
+    private LocalDateTime editadoEm;
 }
