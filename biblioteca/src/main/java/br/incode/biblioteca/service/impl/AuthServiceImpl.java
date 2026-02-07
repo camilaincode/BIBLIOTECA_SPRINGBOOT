@@ -1,6 +1,7 @@
 package br.incode.biblioteca.service.impl;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -8,8 +9,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import br.incode.biblioteca.config.JwtProvider;
 import br.incode.biblioteca.domain.UserRole;
 import br.incode.biblioteca.exception.UserException;
+import br.incode.biblioteca.mapper.UserMapper;
 import br.incode.biblioteca.modal.User;
 import br.incode.biblioteca.payload.dto.UserDTO;
 import br.incode.biblioteca.payload.response.AuthResponse;
@@ -23,9 +26,16 @@ public class AuthServiceImpl implements AuthService {
 
     private final UserRespository repository;
     private final PasswordEncoder passwordEncoder;
+    private final UserMapper mapper;
 
     @Override
     public AuthResponse login(String username, String senha) {
+        Authentication authentication = authenticate(username, senha);
+
+        return null;
+    }
+
+    private Authentication authenticate(String username, String senha){
         return null;
     }
 
@@ -34,7 +44,7 @@ public class AuthServiceImpl implements AuthService {
         User user = repository.findByEmail(request.getEmail());
 
         if (user != null){
-            throw new UserException("esse email já está sendo utilizado!")
+            throw new UserException("esse email já está sendo utilizado!");
         }
 
         User userCriado = new User();
@@ -51,7 +61,15 @@ public class AuthServiceImpl implements AuthService {
         Authentication auth = new UsernamePasswordAuthenticationToken(userSalvo.getEmail(),userSalvo.getSenha());
         SecurityContextHolder.getContext().setAuthentication(auth);
 
-        return null;
+        String jwt = JwtProvider.tokenGerado(auth);
+
+        AuthResponse response = new AuthResponse();
+        response.setJwt(jwt);
+        response.setMensagem("pedido bem sucedido");
+        response.setTitulo("Bem-vindo " + userSalvo.getNomeCompleto());
+        response.setUserDTO(mapper.emDTO(userSalvo));
+
+        return response;
     }
 
     @Override
@@ -61,5 +79,5 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public void resetarSenha(String token, String novaSenha) {
     }
-    
+
 }
